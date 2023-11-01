@@ -9,7 +9,7 @@ import {
 } from '@nestjs/common';
 import { TaskDto } from 'src/Application/Dto/task.dto';
 import { TaskService } from 'src/Application/services/task/task.service';
-import { Task } from 'src/Infrastructure/Schema/Task.schema';
+import { Task } from 'src/Infrastructure/Schema/task.schema';
 @Controller('Task')
 export class TaskController {
   private readonly Taskervice: TaskService;
