@@ -31,7 +31,12 @@ export class TaskController {
     return await this.Taskervice.create(TaskDto);
   }
   @Put()
-  updateTask() {}
+  async updateTask(@Param('id') id: string, @Body() taskDto: TaskDto) {
+    return await this.Taskervice.update(id, taskDto);
+  }
+
   @Delete()
-  deleteTask() {}
+  async deleteTask(@Param('id') id: string) {
+    return await this.Taskervice.delete(id);
+  }
 }

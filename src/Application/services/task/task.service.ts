@@ -14,17 +14,18 @@ export class TaskService {
     return await this.TaskRepository.getTask(id);
   }
 
-  async update(id: any, data: TaskDto): Promise<Task> {
+  async update(id: string, data: TaskDto): Promise<Task> {
     const Task = this.transform(data);
-    return await this.TaskRepository.update(id, Task);
+    await this.TaskRepository.update(id, Task);
+    return this.TaskRepository.getTask(id);
   }
   async create(data: TaskDto): Promise<Task> {
     const Task = this.transform(data);
     return await this.TaskRepository.create(Task);
   }
 
-  delete(): void {
-    throw new Error('Method not implemented.');
+  async delete(id: any) {
+    return await this.TaskRepository.delete(id);
   }
   private transform(TaskDto: TaskDto): Task {
     const task = new Task();
