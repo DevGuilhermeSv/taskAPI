@@ -1,8 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { TaskDto } from 'src/Application/Dto/task.dto';
 import { TaskRepository } from 'src/Infrastructure/Repository/taskRepository';
-import { instanceToInstance, plainToInstance } from 'class-transformer';
-import { Task } from 'src/Infrastructure/Schema/task.schema';
+import { Taskschema as Task } from 'src/Infrastructure/Schema/task.schema';
 
 @Injectable()
 export class TaskService {

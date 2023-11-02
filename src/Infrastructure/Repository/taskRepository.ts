@@ -1,18 +1,23 @@
 import { Injectable } from '@nestjs/common';
 import Repository from './Repository';
-import { InjectModel } from '@nestjs/mongoose';
-import { Document, Model, Query, Schema } from 'mongoose';
-import { TaskDto } from 'src/Application/Dto/task.dto';
-import { Task } from '../Schema/task.schema';
+import { Taskschema } from '../Schema/task.schema';
+import { Repository as TypeRep } from 'typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
+
 @Injectable()
-export class TaskRepository extends Repository<Task> {
-  constructor(@InjectModel(Task.name) private readonly TaskModel: Model<Task>) {
-    super(TaskModel);
+export class TaskRepository extends Repository<Taskschema> {
+  constructor(
+    @InjectRepository(Taskschema)
+    private taskRepository: TypeRep<Taskschema>,
+  ) {
+    super(taskRepository);
   }
-  getTask(id: any): Promise<Task> {
-    return this.TaskModel.findById(id).exec();
+  findByStatus(status: boolean): Promise<Taskschema[]> {
+    return this.repository.find({ where: { status } });
   }
-  updateTask(id: any, item: TaskDto) {
-    return this.TaskModel.findByIdAndUpdate(id, item);
+  findByName(title: string) {
+    return this.repository.find({
+      where: { title },
+    });
   }
 }
