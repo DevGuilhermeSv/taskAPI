@@ -14,4 +14,5 @@ export class TaskDto {
 
   @IsNotEmpty()
   readonly status: boolean;
+
 }

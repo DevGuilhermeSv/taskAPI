@@ -13,7 +13,7 @@ export class Taskschema {
   @Column({ default: true })
   status: boolean;
   @Column({ name: 'created_at' })
-  createdAt?: Date;
-  @Column({ name: 'finished_at' })
+  createdAt: Date = new Date();
+  @Column({ name: 'finished_at', nullable: true })
   finishedAt?: Date;
 }

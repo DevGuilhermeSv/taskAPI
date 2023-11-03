@@ -31,13 +31,13 @@ export class TaskController {
   async createTask(@Body() TaskDto: TaskDto): Promise<Task> {
     return await this.Taskervice.create(TaskDto);
   }
-  @Put()
+  @Put(':id')
   async updateTask(@Param('id') id: string, @Body() taskDto: TaskDto) {
-    return await this.Taskervice.update(id, taskDto);
+    return await this.Taskervice.update(parseInt(id), taskDto);
   }
 
-  @Delete()
+  @Delete(':id')
   async deleteTask(@Param('id') id: string) {
-    return await this.Taskervice.delete(id);
+    return await this.Taskervice.delete(parseInt(id));
   }
 }
