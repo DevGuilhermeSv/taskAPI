@@ -7,9 +7,9 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { TaskDto } from 'src/Application/Dto/task.dto';
-import { TaskService } from 'src/Application/services/task/task.service';
-import { Taskschema as Task } from 'src/Infrastructure/Schema/task.schema';
+import { TaskDto } from 'src/task/Dto/task.dto';
+import { TaskService } from 'src/task/Service/task.service';
+import { Taskschema as Task } from 'src/task/Entities/task.entity';
 
 @Controller('Task')
 export class TaskController {
