@@ -10,7 +10,7 @@ export class Taskschema {
   title: string;
   @Column()
   description: string;
-  @Column({ default: true })
+  @Column({ default: false })
   status: boolean;
   @Column({ name: 'created_at' })
   createdAt: Date = new Date();

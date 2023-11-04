@@ -19,6 +19,7 @@ export class TaskService {
 
   async update(id: number, data: TaskDto): Promise<UpdateResult> {
     const Task = this.transform(data);
+    if (Task.status) Task.finishedAt = new Date();
     return await this.taskRepository.update({ id }, Task);
   }
   async create(data: TaskDto): Promise<Task> {
