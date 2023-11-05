@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { TaskDto } from '../../task/Dto/task.dto';
 import { Taskschema as Task } from '../../task/Entities/task.entity';
-import { Repository, UpdateResult } from 'typeorm';
+import { Like, Repository, UpdateResult } from 'typeorm';
 
 @Injectable()
 export class TaskService {
@@ -10,6 +10,13 @@ export class TaskService {
     @InjectRepository(Task)
     private taskRepository: Repository<Task>,
   ) {}
+  async getByTitle(name: string) {
+    return await this.taskRepository.find({
+      where: {
+        title: Like(`%${name}%`),
+      },
+    });
+  }
   async getAll() {
     return await this.taskRepository.find();
   }

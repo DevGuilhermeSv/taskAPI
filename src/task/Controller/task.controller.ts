@@ -6,12 +6,14 @@ import {
   Param,
   Post,
   Put,
+  Query,
   UseGuards,
 } from '@nestjs/common';
 import { TaskDto } from '../../task/Dto/task.dto';
 import { TaskService } from '../../task/Service/task.service';
 import { Taskschema as Task } from '../../task/Entities/task.entity';
 import { AuthGuard } from '../../auth/auth.guard';
+import { query } from 'express';
 
 @Controller('Task')
 export class TaskController {
@@ -24,6 +26,11 @@ export class TaskController {
   @Get()
   async getAllTask() {
     return await this.taskService.getAll();
+  }
+  @UseGuards(AuthGuard)
+  @Get('/title')
+  async getByTitle(@Query() params: any) {
+    return await this.taskService.getByTitle(params.title);
   }
   @UseGuards(AuthGuard)
   @Get(':id')
