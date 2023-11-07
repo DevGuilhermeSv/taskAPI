@@ -33,6 +33,12 @@ export class TaskController {
     return await this.taskService.getByTitle(params.title);
   }
   @UseGuards(AuthGuard)
+  @Get('/status')
+  async getByStatus(@Query() params: any){
+    let status:boolean = params.status == "true"?true:false
+    return await this.taskService.getByStatus(params.status)
+  }
+  @UseGuards(AuthGuard)
   @Get(':id')
   async getTask(@Param('id') id: any): Promise<Task> {
     return await this.taskService.getTask(id);

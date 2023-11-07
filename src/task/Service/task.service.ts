@@ -17,6 +17,13 @@ export class TaskService {
       },
     });
   }
+  async getByStatus(status:boolean){
+    return await this.taskRepository.find({
+      where: {
+        status
+      },
+    });
+  }
   async getAll() {
     return await this.taskRepository.find();
   }
