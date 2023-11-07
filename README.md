@@ -24,7 +24,29 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+### Routes  
+- Get all Task - /Task [GET]
+- Get a Task - /Task/{id} [GET]
+- Create new Task - /Task [POST]
+- Update Task - /Task/{id} [PUT]
+- Delete Task - /Task/{id} [DELETE]
+- Find by title - /Task/title/?title={name} [GET]
+- Find by status - /Task/status/?status={name} [GET]
+- New User - /user/register [POST]
+- Login - /auth/login [POST]
+
+### Request body example  
+
+```
+{
+   "title": "string";
+
+  "description": "string";
+
+  
+  "status": true;
+}
+```
 
 ## Installation
 
